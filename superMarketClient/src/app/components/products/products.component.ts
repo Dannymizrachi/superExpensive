@@ -74,6 +74,7 @@ export class ProductsComponent implements OnInit {
     console.log(product);
     console.log(product);
     console.log(product);
+    console.log(product);
     let isfound = false;
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
       if (product.id === this.cartService.usersCart[index].id) {
