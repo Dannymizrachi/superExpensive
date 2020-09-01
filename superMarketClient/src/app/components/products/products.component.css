@@ -1,0 +1,66 @@
+.productsContainer {
+  border: 2px solid black;
+  width: 100%;
+  top: 20;
+  flex-wrap: nowrap wrap wrap-reverse;
+
+  position: static;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.productCardDesign {
+  margin: 2%;
+  margin-left: 5%;
+  display: inline-block;
+}
+
+.mainWrapper {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+}
+
+.cartSection {
+  width: 20%;
+  border: 2px solid black;
+  top: 20;
+  position: relative;
+}
+
+.categoryContainer {
+  max-width: 100;
+  margin-top: 5%;
+  border: 2px solid black;
+  position: sticky;
+  top: 0%;
+  z-index: 2;
+  background-color: blueviolet;
+  display: inline-block;
+}
+.submitButton {
+  position: absolute;
+  right: 50%;
+  bottom: 5%;
+}
+.totalPrice {
+  position: absolute;
+  right: 45%;
+  bottom: 10%;
+}
+
+.cartItems {
+  width: 100%;
+  height: 80%;
+  top: 20;
+  flex-wrap: nowrap wrap wrap-reverse;
+
+  position: static;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.itemRow {
+  width: 100%;
+  height: 5%;
+  border: 2px solid black;
+}

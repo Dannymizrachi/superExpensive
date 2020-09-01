@@ -1,0 +1,95 @@
+<div class="headerContainer">
+  <div class="loginContainer">
+    <input
+      type="button"
+      *ngIf="usersService.isNotLoggedIn == false"
+      (click)="signOut()"
+      value="SignOut"
+    />
+    <input
+      type="button"
+      *ngIf="usersService.userType == 'ADMIN'"
+      value="Add a product"
+      (click)="openModalForAddProduct()"
+    />
+    <form *ngIf="usersService.isNotLoggedIn == true">
+      <input
+        type="text"
+        placeholder="User name"
+        name="username"
+        [(ngModel)]="userLoginDetails.userName"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="userLoginDetails.password"
+      />
+      <input type="button" (click)="login()" value="Login" />
+    </form>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div *ngIf="showModal" class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button
+          (click)="closeModal()"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+        >
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form
+          [formGroup]="addProductDetailsForm"
+          class="formClass"
+          (submit)="addProduct()"
+        >
+          <input
+            name="name"
+            [formControl]="name"
+            type="text"
+            placeholder="Product Name"
+          />
+          <input
+            name="price"
+            [formControl]="price"
+            type="text"
+            placeholder="Price"
+          /><br />
+          <input
+            name="description"
+            [formControl]="description"
+            type="text"
+            placeholder="Description"
+          /><br />
+          <select
+            [formControl]="category"
+            name="category"
+            placeholder="Choose Caterogy"
+            class="categorySelect"
+          >
+            <option value="" selected disabled hidden>Choose category</option>
+            <option
+              *ngFor="let category of this.categoriesService.categories"
+              value="{{ category.id }}"
+              name="category"
+            >
+              {{ category.category_name }}
+            </option>
+          </select>
+          <input type="submit" value="add" class="btn btn-danger" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="registerContainer">
+  <div class="formContainer">
+    <h1 class="registerHead">Register</h1>
+
+    <form
+      [formGroup]="registryFormPartTwo"
+      (submit)="addUser()"
+      class="formClass"
+    >
+      <select
+        formControlName="city"
+        class="form-control"
+        [formControl]="cityName"
+      >
+        <option disabled selected value> -- Select a city --</option>
+        <option
+          *ngFor="let cityName of this.citiesService.cities"
+          name="cityName"
+          value="{{ cityName.city_name }}"
+          ngDefaultControl
+          >{{ cityName.city_name }}</option
+        >
+      </select>
+      <br />
+      <input
+        type="text"
+        placeholder="Street"
+        name="street"
+        [formControl]="street"
+      />
+      <br />
+      <input
+        type="text"
+        placeholder="First name"
+        name="firstName"
+        [formControl]="firstName"
+      />
+      <br />
+      <input
+        type="text"
+        placeholder="Last Name"
+        name="lastName"
+        [formControl]="lastName"
+      />
+      <br />
+
+      <input type="submit" value="Continue" />
+    </form>
+  </div>
+</div>
