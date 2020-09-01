@@ -66,14 +66,6 @@ export class ProductsComponent implements OnInit {
 
   public addToCart(product: Products) {
     console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
     let isfound = false;
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
       if (product.id === this.cartService.usersCart[index].id) {
@@ -114,6 +106,7 @@ export class ProductsComponent implements OnInit {
     }
     let observable = this.cartService.deleteItemFromCart(this.deleteItem);
     observable.subscribe();
+<<<<<<< HEAD
     console.log(product);
     console.log(product);
     console.log(product);
@@ -121,5 +114,7 @@ export class ProductsComponent implements OnInit {
     console.log(product);
     console.log("product");
     console.log(product);
+=======
+>>>>>>> 78d140914b8fcbcff96d3c6b3c334f62b1594c71
   }
 }
