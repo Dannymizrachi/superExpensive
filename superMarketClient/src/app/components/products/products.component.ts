@@ -119,7 +119,7 @@ export class ProductsComponent implements OnInit {
     console.log(product);
     console.log(product);
     console.log(product);
-    console.log(product);
+    console.log("product");
     console.log(product);
   }
 }
