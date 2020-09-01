@@ -17,7 +17,7 @@ async function addUser(user) {
 async function login(user) {
   let userData = await usersDao.login(user);
   let saltedUserName = LEFT_SALT + user.userName + RIGHT_SALT;
-  const jwtToken = jwt.sign({ sub: saltedUserName }, config.secret);
+  const jwtToken = jwt.sign({ sub: saltedUserName, userType: userData.user_type }, config.secret);
 
   cacheModule.set(jwtToken, userData);
 

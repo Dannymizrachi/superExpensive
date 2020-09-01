@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   public price: FormControl;
   public category: FormControl;
   public description: FormControl;
+  public userType: string;
 
   constructor(
     usersService: UserService,
@@ -53,6 +54,7 @@ export class HeaderComponent implements OnInit {
         }
         this.usersService.userType = successfulLoginResponse.userType;
         this.usersService.isUserLoggedIn();
+        console.log(successfulLoginResponse.userType);
       },
       (errorObject) => {
         alert(errorObject.error.error);
@@ -110,5 +112,6 @@ export class HeaderComponent implements OnInit {
       category: this.category,
       description: this.description,
     });
+    this.userType = this.usersService.userType;
   }
 }

@@ -9,12 +9,12 @@ input:hover {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-div {
+/* div { */
   /* text-align: center; */
-  margin: auto;
+  /* margin: auto; */
 
   /* catches the full space to the end of the screen */
-}
+/* } */
 
 form {
   column-span: all;
@@ -22,13 +22,14 @@ form {
 
 .headerContainer {
   margin-top: 1%;
-  margin-left: 35%;
+  /* margin-left: 35%; */
 }
 
 .loginContainer {
   position: relative;
-  left: 20%;
-  display: inline-block;
+  /* left: 20%; */
+  display: flex;
+  justify-content: flex-end;
 }
 
 .modal {

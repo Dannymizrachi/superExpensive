@@ -54,6 +54,12 @@ let ErrorType = {
     message: "Failed to update order",
     isShowStackTrace: false,
   },
+  FAILED_TO_ADD_PRODUCT: {
+    id: 10,
+    httpCode: 607,
+    message: "Failed to add product",
+    isShowStackTrace: false,
+  },
 };
 
 module.exports = ErrorType;

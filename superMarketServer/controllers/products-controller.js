@@ -2,6 +2,7 @@ const express = require("express");
 const usersCache = require("../dao/cache-module");
 const productsLogic = require("../logic/products-logic");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 router.get("/", async (request, response) => {
   try {
@@ -38,7 +39,7 @@ router.post("/", async (request, response, next) => {
   let token = authorizationString.substring("Bearer ".length);
   let userData = usersCache.get(token);
   let productDetails = request.body;
-
+  
   try {
     let product = await productsLogic.addProduct(productDetails);
     response.json(product);
