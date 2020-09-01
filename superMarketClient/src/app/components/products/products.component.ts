@@ -123,15 +123,5 @@ export class ProductsComponent implements OnInit {
     }
     let observable = this.cartService.deleteItemFromCart(this.deleteItem);
     observable.subscribe();
-<<<<<<< HEAD
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log(product);
-    console.log("product");
-    console.log(product);
-=======
->>>>>>> 78d140914b8fcbcff96d3c6b3c334f62b1594c71
   }
 }
