@@ -10,7 +10,7 @@
           </tr>
         </thead>
 
-        <tbody class="bg-success text-dark">
+        <tbody *ngIf="this.cartService.total != 0" class="bg-success text-dark">
           <tr
             *ngFor="let product of cartService.usersCart"
             data-toggle="modal"

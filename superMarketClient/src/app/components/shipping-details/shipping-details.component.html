@@ -12,7 +12,7 @@
           </thead>
 
           <tbody class="bg-success text-dark">
-            <tr *ngFor="let product of cartService.products" class="itemRow">
+            <tr *ngFor="let product of cartService.usersCart" class="itemRow">
               <td>{{ product.product_name }}</td>
               <td>{{ product.unit_price }}</td>
               <td>{{ product.amount }}</td>

@@ -6,7 +6,6 @@ import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 
 import { CategoriesService } from 'src/app/services/categories.service';
-import { AppModule } from 'src/app/modules/app.module';
 
 @Component({
   selector: 'app-products',
@@ -37,7 +36,6 @@ export class ProductsComponent implements OnInit {
       (productsList) => {
         for (let index = 0; index < productsList.length; index++) {
           productsList[index].amount = 1;
-          console.log(productsList[index].total_price);
         }
         this.productService.products = productsList;
       },
@@ -48,8 +46,9 @@ export class ProductsComponent implements OnInit {
     let userCartObservable = this.cartService.getUsersCartItems();
     userCartObservable.subscribe((cartItems) => {
       this.cartService.usersCart = cartItems;
-
-      this.cartService.updateTotal();
+      if (cartItems.length != 0) {
+        this.cartService.total = cartItems[0].total_price;
+      }
     });
 
     this.categoriesService.getAllCategories();
@@ -74,6 +73,8 @@ export class ProductsComponent implements OnInit {
       }
     }
     if (isfound == false) {
+      console.log(product);
+      console.log(this.addToCartModel);
       this.cartService.usersCart.push(product);
     }
     this.addToCartModel.id = product.id;
@@ -81,9 +82,8 @@ export class ProductsComponent implements OnInit {
     this.addToCartModel.unit_price = product.unit_price;
 
     let observable = this.cartService.addToCart(this.addToCartModel);
-    // this.cartService.updateTotal();
+
     observable.subscribe();
-    console.log(product);
   }
 
   public onOrderClicked() {
@@ -102,9 +102,23 @@ export class ProductsComponent implements OnInit {
     this.deleteItem.id = product.id;
     this.deleteItem.amount = 1;
     this.deleteItem.unit_price = product.unit_price;
-    const index = this.cartService.usersCart.indexOf(product);
-    if (index > -1) {
-      this.cartService.usersCart.splice(index, 1);
+    if (this.cartService.usersCart.length == 0) {
+      return;
+    }
+
+    let isfound = false;
+    for (let index = 0; index < this.cartService.usersCart.length; index++) {
+      if (product.id === this.cartService.usersCart[index].id) {
+        isfound = true;
+        this.cartService.usersCart[index].amount--;
+        product.total_price = this.cartService.usersCart[index].total_price;
+      }
+    }
+    if (isfound == false) {
+      const index = this.cartService.usersCart.indexOf(product);
+      if (index > -1) {
+        this.cartService.usersCart.splice(index, 1);
+      }
     }
     let observable = this.cartService.deleteItemFromCart(this.deleteItem);
     observable.subscribe();

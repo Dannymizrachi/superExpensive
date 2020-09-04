@@ -14,9 +14,8 @@ export class CartService {
   public usersCart: Products[];
 
   constructor(private http: HttpClient) {
-    this.total = 0;
     this.products = [];
-    this.sum = 0;
+    this.total = 0;
     this.usersCart = [];
   }
 
@@ -36,13 +35,5 @@ export class CartService {
       'http://localhost:3000/cartItem/deleteItem',
       currentProduct
     );
-  }
-
-  public updateTotal() {
-    console.log(this.usersCart);
-    for (let index = 0; index < this.usersCart.length; index++) {
-      this.sum = this.sum += this.usersCart[index].total_price;
-    }
-    this.total = this.sum;
   }
 }

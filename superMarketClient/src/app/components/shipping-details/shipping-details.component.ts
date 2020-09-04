@@ -53,13 +53,6 @@ export class ShippingDetailsComponent implements OnInit {
       creditCard: this.creditCard,
       city: this.city,
     });
-    this.cartService.sum = 0;
-    for (let index = 0; index < this.cartService.usersCart.length; index++) {
-      this.cartService.sum = this.cartService.sum += this.cartService.usersCart[
-        index
-      ].total_price;
-    }
-    this.cartService.total = this.cartService.sum;
   }
 
   public backToShop() {
