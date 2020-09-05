@@ -45,9 +45,7 @@ export class ProductsComponent implements OnInit {
     userCartObservable.subscribe((cartItems) => {
       this.cartService.usersCart = cartItems;
       if (cartItems.length != 0) {
-        for (let index = 0; index < cartItems.length; index++) {
-          this.cartService.total += cartItems[index].total_price;
-        }
+        this.cartService.total = cartItems[0].total_price;
       }
     });
 
@@ -67,13 +65,15 @@ export class ProductsComponent implements OnInit {
     console.log(product);
     let isfound = false;
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
-      if (product.product_id === this.cartService.usersCart[index].product_id) {
+      if (product.id === this.cartService.usersCart[index].id) {
         isfound = true;
         this.cartService.usersCart[index].amount++;
         // product.total_price = this.cartService.usersCart[index].total_price;
       }
     }
-    if (!isfound) {
+    if (isfound == false) {
+      console.log(product);
+      console.log(this.addToCartModel);
       this.cartService.usersCart.push(product);
     }
 
@@ -97,7 +97,6 @@ export class ProductsComponent implements OnInit {
 
   public deleteItemFromCart(product: Products) {
     let isfound = false;
-
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
       let currentProduct = this.cartService.usersCart[index];
       if (product.product_id === currentProduct.product_id) {

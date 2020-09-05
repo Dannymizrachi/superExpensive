@@ -2,7 +2,7 @@ let connection = require("./connection-wrapper");
 
 async function getAllProducts() {
   let sql = `SELECT 
-    products.id as product_id,
+    products.id,
     product_name,
     unit_price,
     categories.category_name,

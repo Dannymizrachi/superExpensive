@@ -86,8 +86,8 @@ export class AdminComponent implements OnInit {
     this.productForEdit.unit_price = this.price.value;
     this.productForEdit.category = this.category.value;
     this.productForEdit.description = this.description.value;
-    this.productForEdit.product_id;
-    console.log(this.productForEdit.product_id);
+    this.productForEdit.id;
+    console.log(this.productForEdit.id);
 
     let observable = this.productService.editProduct(this.productForEdit);
     observable.subscribe();
