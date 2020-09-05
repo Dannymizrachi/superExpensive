@@ -13,8 +13,4 @@ async function addProduct(productDetails) {
   await productsDao.addProduct(productDetails);
 }
 
-async function editProduct(productDetails) {
-  await productsDao.editProduct(productDetails);
-}
-
-module.exports = { getAllProducts, pullProductItem, addProduct, editProduct };
+module.exports = { getAllProducts, pullProductItem, addProduct };

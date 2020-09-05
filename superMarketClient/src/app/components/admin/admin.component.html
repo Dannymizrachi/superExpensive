@@ -80,7 +80,7 @@
             <option value="" selected disabled hidden>Choose category</option>
             <option
               *ngFor="let category of this.categoriesService.categories"
-              value="{{ category.category_name}"
+              value="{{ category.id }}"
               name="category"
             >
               {{ category.category_name }}

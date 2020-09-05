@@ -35,8 +35,7 @@ export class ProductsComponent implements OnInit {
     productObservable.subscribe(
       (productsList) => {
         for (let index = 0; index < productsList.length; index++) {
-          productsList[index].amount = 0;
-          console.log(productsList[index]);
+          productsList[index].amount = 1;
         }
         this.productService.products = productsList;
       },
@@ -71,7 +70,7 @@ export class ProductsComponent implements OnInit {
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
       if (product.product_id === this.cartService.usersCart[index].product_id) {
         isfound = true;
-        this.cartService.usersCart[index].amount+= 1;
+        this.cartService.usersCart[index].amount++;
         product.total_price = this.cartService.usersCart[index].total_price;
       }
     }
@@ -99,6 +98,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public deleteItemFromCart(product: Products) {
+    console.log(product);
     this.deleteItem.product_id = product.product_id;
     this.deleteItem.amount = 1;
     this.deleteItem.unit_price = product.unit_price;
