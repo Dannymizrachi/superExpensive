@@ -11,12 +11,7 @@
         </thead>
 
         <tbody *ngIf="this.cartService.total != 0" class="bg-success text-dark">
-          <tr
-            *ngFor="let product of cartService.usersCart"
-            data-toggle="modal"
-            data-target="#myModal"
-            class="itemRow"
-          >
+          <tr *ngFor="let product of cartService.usersCart" class="itemRow">
             <td>{{ product.product_name }}</td>
             <td>{{ product.unit_price }}</td>
             <td>{{ product.amount }}</td>

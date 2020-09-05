@@ -108,7 +108,7 @@ async function getAllCartItems(cartId) {
     amount,
     total_price,
      unit_price,
-     product_id as id
+     product_id as product_id
 from
 	products
 join

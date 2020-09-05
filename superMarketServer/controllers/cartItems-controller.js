@@ -19,7 +19,7 @@ router.post("/addToCart", async (request, response, next) => {
   // console.log(cartId);
   try {
     await cartItemsLogic.addItemToCart(
-      cartItem.id,
+      cartItem.product_id,
       cartItem.amount,
       cartId,
       userId
@@ -44,7 +44,7 @@ router.post("/deleteItem", async (request, response, next) => {
   // console.log(cartId);
   try {
     await cartItemsLogic.deleteItemFromCart(
-      cartItem.id,
+      cartItem.product_id,
       cartItem.amount,
       cartId
     );
