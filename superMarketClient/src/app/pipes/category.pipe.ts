@@ -12,7 +12,7 @@ export class CategoryPipe implements PipeTransform {
       return products;
     } else {
       return products.filter((product) => {
-        return product.product_id === id;
+        return product.id === id;
       });
     }
   }

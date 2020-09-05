@@ -39,9 +39,4 @@ export class UserService {
       this.isNotLoggedIn = false;
     }
   }
-
-  public getUserType(): Observable<SuccessfulLoginServerResponse[]>{
-    return this.http.get<SuccessfulLoginServerResponse[]>('http://localhost:3000/users/user-type');
-  }
-
 }

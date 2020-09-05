@@ -16,9 +16,4 @@ async function insertShippingDetails(
   );
 }
 
-async function getOrderInfo(cartID){
-  let orderDetails = await ordersDao.getOrderInfo(cartID);
-  return orderDetails;
-}
-
-module.exports = { insertShippingDetails, getOrderInfo };
+module.exports = { insertShippingDetails };

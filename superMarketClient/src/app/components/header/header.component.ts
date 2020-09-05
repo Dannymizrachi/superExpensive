@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
         }
         this.usersService.userType = successfulLoginResponse.userType;
         this.usersService.isUserLoggedIn();
+        console.log(successfulLoginResponse.userType);
       },
       (errorObject) => {
         alert(errorObject.error.error);
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit {
 
     this.addProducts.product_name = this.name.value;
     this.addProducts.unit_price = this.price.value;
-    this.addProducts.category_name = this.category.value;
+    this.addProducts.category = this.category.value;
     this.addProducts.description = this.description.value;
 
     let observable = this.productService.addProduct(this.addProducts);
