@@ -76,17 +76,9 @@ export class ProductsComponent implements OnInit {
       console.log(this.addToCartModel);
       this.cartService.usersCart.push(product);
     }
-<<<<<<< HEAD
-    this.addToCartModel.id = product.id;
-    this.addToCartModel.amount = 1;
-    this.addToCartModel.unit_price = product.unit_price;
-
-    let observable = this.cartService.addToCart(this.addToCartModel);
-=======
 
     this.cartService.total += product.unit_price;
     let observable = this.cartService.addToCart(product);
->>>>>>> 6af6120a5d00f2cee2e629004f8583a852fb46fa
 
     observable.subscribe();
   }
@@ -104,31 +96,8 @@ export class ProductsComponent implements OnInit {
   }
 
   public deleteItemFromCart(product: Products) {
-<<<<<<< HEAD
-    this.deleteItem.id = product.id;
-    this.deleteItem.amount = 1;
-    this.deleteItem.unit_price = product.unit_price;
-    if (this.cartService.usersCart.length == 0) {
-      return;
-    }
-=======
-    let isfound = false;
->>>>>>> 6af6120a5d00f2cee2e629004f8583a852fb46fa
-
     let isfound = false;
     for (let index = 0; index < this.cartService.usersCart.length; index++) {
-<<<<<<< HEAD
-      if (product.id === this.cartService.usersCart[index].id) {
-        isfound = true;
-        this.cartService.usersCart[index].amount--;
-        product.total_price = this.cartService.usersCart[index].total_price;
-      }
-    }
-    if (isfound == false) {
-      const index = this.cartService.usersCart.indexOf(product);
-      if (index > -1) {
-        this.cartService.usersCart.splice(index, 1);
-=======
       let currentProduct = this.cartService.usersCart[index];
       if (product.product_id === currentProduct.product_id) {
         isfound = true;
@@ -144,7 +113,6 @@ export class ProductsComponent implements OnInit {
 
         let observable = this.cartService.deleteItemFromCart(product);
         observable.subscribe();
->>>>>>> 6af6120a5d00f2cee2e629004f8583a852fb46fa
       }
     }
   }
