@@ -1,12 +1,15 @@
 let connection = require("./connection-wrapper");
+const ServerError = require("../errors/server-error");
+const ErrorType = require("../errors/error-type");
 
 async function getAllProducts() {
   let sql = `SELECT 
     products.id as product_id,
     product_name,
     unit_price,
-    categories.category_name,
-    description 
+    categories.category_name as category_name,
+    description,
+    categories.id as category_id 
    from 
     shufersal.products
    join 
@@ -49,4 +52,29 @@ async function addProduct(productDetails) {
     throw new ServerError(ErrorType.FAILED_TO_ADD_PRODUCT);
   }
 }
-module.exports = { getAllProducts, pullProductItem, addProduct };
+
+async function editProduct(productDetails) {
+  let sql = `update
+  products 
+  set 
+  product_name =?,
+  unit_price = ?,
+  category = (select id from categories where category_name=?),
+  description = ?
+  where
+  id = ?`;
+  let parameters = [
+    productDetails.product_name,
+    productDetails.unit_price,
+    productDetails.category_name,
+    productDetails.description,
+    productDetails.product_id,
+  ];
+  try {
+    await connection.executeWithParameters(sql, parameters);
+  } catch {
+    throw new ServerError(ErrorType.FAILED_TO_UPDATE_PRODUCT);
+  }
+}
+
+module.exports = { getAllProducts, pullProductItem, addProduct,editProduct };

@@ -7,11 +7,12 @@ import { RegisterStepTwoComponent } from '../components/register-step-two/regist
 import { RegisterStepThreeComponent } from '../components/register-step-three/register-step-three.component';
 import { ShippingDetailsComponent } from '../components/shipping-details/shipping-details.component';
 import { ThankYouComponent } from '../components/thank-you/thank-you.component';
+import { AdminGuard } from './guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: RegisterComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin',component: AdminComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'register-step-two', component: RegisterStepTwoComponent },
   { path: 'register-step-three', component: RegisterStepThreeComponent },

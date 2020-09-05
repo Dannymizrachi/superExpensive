@@ -1,6 +1,7 @@
 let connection = require("./connection-wrapper");
 const ServerError = require("../errors/server-error");
 const ErrorType = require("../errors/error-type");
+let cacheModule = require("../dao/cache-module");
 
 async function addUser(user) {
   let sql =
@@ -86,8 +87,16 @@ async function login(user) {
   }
 }
 
+
+async function getUserType(token) {
+  let userType = cacheModule.get(token);
+  console.log(userType.user_type)
+  return userType.user_type;
+}
+
 module.exports = {
   addUser,
   isUserExistByName,
   login,
+  getUserType,
 };
