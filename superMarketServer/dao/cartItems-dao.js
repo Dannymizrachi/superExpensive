@@ -27,8 +27,8 @@ async function deleteItemFromCart(product_id, amount, cart_id) {
     product_id,
   ];
   try {
-    await connection.executeWithParameters(sql, parameters);
     await checkAmountFieldToDelete(product_id, cart_id);
+    await connection.executeWithParameters(sql, parameters);
   } catch (error) {
     throw new ServerError(ErrorType.GENERAL_ERROR, sql, error);
   }
