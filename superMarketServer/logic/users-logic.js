@@ -28,7 +28,13 @@ async function login(user) {
   return successfullLoginResponse;
 }
 
+async function getUserType(token) {
+  let userType = await usersDao.getUserType(token);
+  return userType;
+}
+
 module.exports = {
   addUser,
   login,
+  getUserType,
 };

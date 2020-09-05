@@ -29,4 +29,18 @@ router.post("/login", async (request, response, next) => {
   }
 });
 
+router.get("/user-type", async (request, response) => {
+  let authorizationString = request.headers["authorization"];
+  let token = authorizationString.substring("Bearer ".length);
+  try {
+    let userType = await usersLogic.getUserType(token);
+    response.json(userType);
+  } catch (err) {
+    // return next(error);
+    console.log("Failed to get userType");
+    console.error(err);
+    response.status(600).send(error.message);
+  }
+});
+
 module.exports = router;

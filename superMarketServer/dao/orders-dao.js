@@ -40,6 +40,32 @@ async function updateOrder(userId) {
   }
 }
 
+async function getOrderInfo(cartID){
+  let sql = `SELECT 
+	amount,
+    total_price as itemTotalPrice,
+    totalPrice as cartTotalPrice,
+    product_name
+    
+ FROM 
+	shufersal.cart_items
+JOIN shufersal.shopping_cart
+JOIN shufersal.products   
+
+where shopping_cart.id = ? and products.id = cart_items.product_id`
+
+let parameters = [cartID]
+try {
+  let orderDetails = await connection.executeWithParameters(sql, parameters);
+  return orderDetails;
+} catch {
+  throw new ServerError(ErrorType.FAILED_TO_UPDATE_ORDER);
+}
+
+}
+
+
 module.exports = {
   insertShippingDetails,
+  getOrderInfo,
 };

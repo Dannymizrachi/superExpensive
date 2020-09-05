@@ -50,4 +50,20 @@ router.post("/", async (request, response, next) => {
   }
 });
 
+router.post("/edit-product", async (request, response, next) => {
+  let authorizationString = request.headers["authorization"];
+  let token = authorizationString.substring("Bearer ".length);
+  let userData = usersCache.get(token);
+  let productDetails = request.body;
+
+  try {
+    let product = await productsLogic.editProduct(productDetails);
+    response.json(product);
+  } catch (err) {
+    // return next(error);
+    console.error(err);
+    response.status(600).send(error.message);
+  }
+});
+
 module.exports = router;

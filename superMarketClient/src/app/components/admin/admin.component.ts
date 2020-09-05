@@ -50,6 +50,7 @@ export class AdminComponent implements OnInit {
     categoriesObservable.subscribe(
       (categoryList) => {
         this.categoriesService.categories = categoryList;
+        console.log(categoryList)
       },
       (error) => {
         alert('Failed to get Categories ' + JSON.stringify(error));
@@ -63,7 +64,7 @@ export class AdminComponent implements OnInit {
     this.price = new FormControl(`${this.productForEdit.unit_price}`, [
       Validators.required,
     ]);
-    this.category = new FormControl(`${this.productForEdit.category}`, [
+    this.category = new FormControl(`${this.productForEdit.category_name}`, [
       Validators.required,
     ]);
     this.description = new FormControl(`${this.productForEdit.description}`, [
@@ -84,7 +85,7 @@ export class AdminComponent implements OnInit {
   public editProduct() {
     this.productForEdit.product_name = this.name.value;
     this.productForEdit.unit_price = this.price.value;
-    this.productForEdit.category = this.category.value;
+    this.productForEdit.category_name = this.category.value;
     this.productForEdit.description = this.description.value;
     this.productForEdit.product_id;
     console.log(this.productForEdit.product_id);

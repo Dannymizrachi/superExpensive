@@ -22,7 +22,7 @@ export class ProductService {
   }
   public editProduct(currentProduct: Products) {
     return this.http.post<void>(
-      'http://localhost:3000/products',
+      'http://localhost:3000/products/edit-product',
       currentProduct
     );
   }
