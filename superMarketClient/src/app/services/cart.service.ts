@@ -23,15 +23,13 @@ export class CartService {
     return this.http.get<Products[]>('http://localhost:3000/cartItem');
   }
   public addToCart(currentProduct: Products) {
-    this.total += currentProduct.unit_price;
-    return this.http.post<void>(
+    return this.http.post(
       'http://localhost:3000/cartItem/addToCart',
       currentProduct
     );
   }
   public deleteItemFromCart(currentProduct: Products) {
-    this.total -= currentProduct.unit_price;
-    return this.http.post<void>(
+    return this.http.post(
       'http://localhost:3000/cartItem/deleteItem',
       currentProduct
     );

@@ -3,7 +3,6 @@
   width: 100%;
   top: 20;
   flex-wrap: nowrap wrap wrap-reverse;
-
   position: static;
   overflow: scroll;
   overflow-x: hidden;

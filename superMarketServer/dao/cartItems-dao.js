@@ -40,7 +40,7 @@ async function checkAmountFieldToDelete(product_id, cart_id) {
   try {
     let fieldCheck = await connection.executeWithParameters(sql, parameters);
     console.log(fieldCheck);
-    if (fieldCheck[0].amount === 0) {
+    if (fieldCheck[0].amount <= 0) {
       await deleteFieldFromDB(product_id, cart_id);
     } else {
       return;
