@@ -1,0 +1,70 @@
+<div class="mainContainer">
+  <div class="cartContainer">
+    <div class="cartSection">
+      <div class="cartItems">
+        <table class="table table-old">
+          <thead class="bg-primary-new white-text">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+
+          <tbody class="bg-success-new text-dark">
+            <tr *ngFor="let product of cartService.usersCart" class="itemRow">
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.unit_price }}</td>
+              <td>{{ product.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h6 class="totalPrice">Total Price: {{ this.cartService.total }}</h6>
+      <button class="backToShopBtn" (click)="backToShop()">Back to shop</button>
+    </div>
+  </div>
+  <div class="shippingDetails">
+    <form class="formClass" [formGroup]="orderDetails" (submit)="orderValid()">
+      <select formControlName="city" class="form-control" [formControl]="city">
+        <option disabled selected value>
+          -- Select a city for delivery --
+        </option>
+        <option
+          *ngFor="let cityName of this.citiesService.cities"
+          name="cityName"
+          value="{{ cityName.city_name }}"
+          ngDefaultControl
+        >
+          {{ cityName.city_name }}
+        </option>
+      </select>
+      <br />
+      <input
+        type="text"
+        placeholder="Shipping Address"
+        name="street"
+        [formControl]="street"
+      />
+      <br />
+      <p>Shipping date:</p>
+      <input
+        type="date"
+        placeholder="Shipping Date"
+        name="shippingDate"
+        [formControl]="date"
+      />
+      <br />
+      <hr />
+      <label>Payment:</label><br />
+      <input
+        type="number"
+        placeholder="Credit Card"
+        name="creditCard"
+        [formControl]="creditCard"
+      />
+      <br />
+      <input type="submit" value="Continue" />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="mainWrapper">
+  <div class="cartSection">
+    <div class="cartItems">
+      <table class="table table-old">
+        <thead class="bg-primary-new white-text">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+
+        <tbody
+          *ngIf="this.cartService.total != 0"
+          class="bg-success-new text-dark"
+        >
+          <tr *ngFor="let product of cartService.usersCart" class="itemRow">
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.unit_price }}</td>
+            <td>{{ product.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h6 class="totalPrice">Total Price: {{ this.cartService.total }}</h6>
+    <input
+      type="button"
+      class="submitButton"
+      value="order"
+      (click)="onOrderClicked()"
+    />
+  </div>
+  <div class="productsContainer">
+    <div class="allCategoriesContainer">
+      <div class="categoryContainer">
+        <button class="pipeButtons" (click)="showAllProducts()">
+          All Products
+        </button>
+      </div>
+      <div
+        *ngFor="let category of categoriesService.categories"
+        class="categoryContainer"
+      >
+        <button
+          class="pipeButtons"
+          (click)="onCategoryClicked(category.id)"
+          *ngIf="!isCategoryNotShown"
+        >
+          {{ category.category_name }}
+        </button>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      *ngFor="let product of productService.products | categoryPipe: categoryID"
+      class="col-lg-2 col-md-3 mb-12 productCardDesign"
+    >
+      <div class="card h-100">
+        <a
+          ><img
+            class="card-img-top imageSize"
+            src="http://localhost:3000/uploads/{{ product.img_src }}"
+            alt=""
+        /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a class="productName">{{ product.product_name }}</a>
+          </h4>
+          <h5>&#8362;{{ product.unit_price }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <input
+            type="button"
+            class="addToCart"
+            value="+"
+            (click)="addToCart(product)"
+          />
+          &nbsp;&nbsp;&nbsp;
+          <input
+            type="button"
+            value="-"
+            (click)="deleteItemFromCart(product)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

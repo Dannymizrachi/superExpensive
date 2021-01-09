@@ -1,0 +1,90 @@
+input {
+  width: 150px;
+  font-size: large;
+  margin: 10px;
+}
+
+input:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+form {
+  column-span: all;
+}
+
+.headerContainer {
+  height: 100%;
+  /* margin-left: 35%; */
+}
+
+.logoContainer {
+  position: fixed;
+  display: inline-flex;
+}
+
+.logo {
+  width: 290px;
+  height: 72px;
+  margin-left: 10%;
+}
+
+.loginContainer {
+  position: fixed;
+  display: inline-flex;
+  right: 20px;
+  margin-top: 1%;
+}
+@media only screen and (max-width: 1000px) {
+  .loginContainer {
+    margin-top: 100px;
+  }
+}
+
+.modal {
+  display: block;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 45%;
+  height: 68%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.6s;
+}
+
+.middleText {
+  font-size: 20px;
+}
+.modal-body1 {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  right: 150px;
+}
+
+.imageSize {
+  width: 150px;
+  height: 100px;
+}
+.uploadImage {
+  outline: none;
+}
+.logoButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}

@@ -1,0 +1,32 @@
+section {
+  max-height: 100%;
+  min-height: 100%;
+  border: 2px solid black;
+  background-color: white;
+
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columns */
+  grid-template-rows: 10% 80% 10%; /* 3 rows */
+}
+
+section > * {
+  border: 2px solid black;
+}
+
+header {
+  background-color: white;
+
+  grid-column: span 12;
+}
+footer {
+  background-color: white;
+
+  grid-column: span 12;
+  text-align: center;
+}
+
+main {
+  grid-column: span 12;
+  text-align: center;
+}

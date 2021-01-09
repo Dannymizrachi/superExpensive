@@ -1,0 +1,57 @@
+<div class="registerContainer">
+  <div class="formContainer">
+    <h1 class="registerHead">Register</h1>
+    <form
+      [formGroup]="registryForm"
+      (submit)="checkPasswords(registryForm)"
+      class="formClass"
+    >
+      <input
+        type="text"
+        placeholder="User name"
+        name="username"
+        [formControl]="userName"
+      />
+      <br />
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        [formControl]="email"
+      />
+      <br />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [formControl]="password"
+      />
+      <br />
+      <input
+        type="Password"
+        placeholder="Confirm Password"
+        name="confirmPassword"
+        [formControl]="confirmpassword"
+      />
+      <br />
+      <input type="submit" value="Continue" />
+    </form>
+  </div>
+  <div class="marketDescriptionContainer">
+    <h2>mySupermarket</h2>
+    <div class="marketDescription">
+      is a service that allows you to purchase the cheapest and most suitable
+      shopping basket for you. When purchasing through us, we will offer you
+      various offers that will save you money Our goal is to help you get the
+      best price for your shopping cart while providing an enhanced and friendly
+      shopping experience. The prices and promotions displayed on the website
+      are updated daily. mySupermarket Insights Our business service,
+      mySupermarket-Insights, provides manufacturers, marketers and any other
+      body involved in the field of retail in Israel, a quick and easy way to
+      monitor price volatility in Israel in real time. The service offers quick
+      access to clear and concise information displayed in Excel tables, graphs
+      and tables that show current prices and long-term trends of all brands and
+      product categories.
+    </div>
+  </div>
+</div>

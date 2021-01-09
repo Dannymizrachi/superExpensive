@@ -1,0 +1,152 @@
+<div class="mainWrapper">
+  <div class="productsContainer">
+    <div
+      *ngFor="let product of productService.products"
+      class="col-lg-2 col-md-3 mb-12 productCardDesign"
+    >
+      <div class="card h-100">
+        <div
+          (click)="onDeleteProductClicked(product)"
+          class="clearProductButton"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </div>
+        <img
+          class="card-img-top imageSize"
+          src="http://localhost:3000/uploads/{{ product.img_src }}"
+          alt=""
+        />
+
+        <div class="card-body">
+          <h4 class="card-title">
+            <span>{{ product.product_name }}</span>
+          </h4>
+          <h5>{{ product.unit_price }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <button
+            class="editBtn"
+            data-toggle="modal"
+            data-target="#myModal"
+            type="button"
+            (click)="openModalForEdit(product)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showModal" class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit product</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          (click)="closeModal()"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form
+          [formGroup]="editProductDetailsForm"
+          class="formClass"
+          (submit)="editProduct()"
+        >
+          <input
+            type="text"
+            name="name"
+            [formControl]="name"
+            value="{{ productForEdit.product_name }}"
+          />
+          <input
+            type="text"
+            name="price"
+            [formControl]="price"
+            id=""
+            value="{{ productForEdit.unit_price }}"
+          />
+          <input
+            type="text"
+            name="description"
+            [formControl]="description"
+            id=""
+            value="{{ productForEdit.description }}"
+          /><br />
+          <select
+            [formControl]="category"
+            name="category"
+            placeholder="Choose Caterogy"
+            class="categorySelect"
+          >
+            <option value="" selected disabled hidden>Choose category</option>
+            <option
+              *ngFor="let category of this.categoriesService.categories"
+              value="{{ category.category_name }}"
+              name="category"
+            >
+              {{ category.category_name }}
+            </option>
+          </select>
+
+          <input type="submit" value="Submit" class="btn btn-danger" />
+        </form>
+        <div style="text-align: center; margin-top: 100px">
+          <mat-card style="margin-top: 10px; width: 50%">
+            <mat-card-content>
+              <img
+                *ngIf="imageExists"
+                class="imageSize"
+                [src]="this.uploadedImageName"
+              />
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                class="uploadImage"
+                mat-button
+                color="warn"
+                (click)="onClick()"
+              >
+                Upload image
+              </button>
+            </mat-card-actions> </mat-card
+          ><input
+            type="file"
+            #fileUpload
+            id="fileUpload"
+            name="fileUpload"
+            multiple="multiple"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
